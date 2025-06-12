@@ -202,7 +202,6 @@ target_link_libraries(plotjuggler_qwt
     Qt6::Widgets
     Qt6::Concurrent
     Qt6::Svg
-    Qt6::Core5Compat
     )
 
 target_compile_definitions(plotjuggler_qwt PUBLIC QWT_MOC_INCLUDE)

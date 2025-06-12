@@ -29,7 +29,6 @@
 #include <QScrollBar>
 #include <QSettings>
 #include <QStringListModel>
-#include <QStringRef>
 #include <QThread>
 #include <QTextStream>
 #include <QWindow>

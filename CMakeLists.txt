@@ -106,7 +106,6 @@ find_package(Qt6 REQUIRED COMPONENTS
     OpenGL
     WebSockets
     Network
-    Core5Compat
     OpenGLWidgets
 )
 
@@ -119,7 +118,6 @@ set( QT_LINK_LIBRARIES
     Qt6::Svg
     Qt6::OpenGL
     Qt6::WebSockets
-    Qt6::Core5Compat
     Qt6::OpenGLWidgets
 )
 
@@ -149,7 +147,6 @@ include_directories(
     ${Qt6WebSockets_INCLUDE_DIRS}
     ${Qt6Svg_INCLUDE_DIRS}
     ${Qt6OpenGL_INCLUDE_DIRS}
-    ${Qt6Core5Compat_INCLUDE_DIRS}
     ${Qt6OpenGLWidgets_INCLUDE_DIRS}
 )
 

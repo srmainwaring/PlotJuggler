@@ -270,7 +270,6 @@ void DataLoadCSV::parseHeader(QFile& file, std::vector<std::string>& column_name
   _model->setRowCount(lines.count());
   for (int row = 0; row < lines.count(); row++)
   {
-    // QVector<QStringRef> lineToken = lines[row].splitRef(_delimiter);
     QStringList lineToken = lines[row].split(_delimiter, Qt::SkipEmptyParts);
     for (int j = 0; j < lineToken.size(); j++)
     {
