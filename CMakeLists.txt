@@ -218,6 +218,8 @@ endif()
 target_link_libraries(plotjuggler_base
     PUBLIC
         plotjuggler_qwt
+        ${Qt6Xml_LIBRARIES}
+        ${Qt6OpenGLWidgets_LIBRARIES}
     PRIVATE
         lua::lua
         sol2::sol2
