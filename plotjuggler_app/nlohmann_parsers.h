@@ -128,7 +128,7 @@ public:
         topic_name, data, _checkbox_use_timestamp->isChecked(), timestamp_name);
   }
 
-  virtual QWidget* optionsWidget()
+  virtual QWidget* optionsWidget() override
   {
     loadSettings();
 

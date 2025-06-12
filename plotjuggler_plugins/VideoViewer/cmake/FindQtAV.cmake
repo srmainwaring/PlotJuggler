@@ -6,9 +6,9 @@
 #  QTAV_INCLUDE_DIRS - the libqtav include directory
 #  QTAV_LIBRARIES    - Link these to use libqtav
 
-find_package(Qt5 QUIET REQUIRED NO_MODULE COMPONENTS Core)
+find_package(Qt6 QUIET REQUIRED NO_MODULE COMPONENTS Core)
 
-get_target_property(qmake Qt5::qmake LOCATION)
+get_target_property(qmake Qt6::qmake LOCATION)
 execute_process(
     COMMAND ${qmake} -query QT_INSTALL_HEADERS
     OUTPUT_VARIABLE QT_INSTALL_HEADERS

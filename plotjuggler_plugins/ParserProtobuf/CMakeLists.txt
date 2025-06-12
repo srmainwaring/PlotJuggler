@@ -16,7 +16,7 @@ if( Protobuf_FOUND)
     add_definitions(-DQT_PLUGIN)
 
     message(STATUS "[Protobuf] found")
-    QT5_WRAP_UI ( UI_SRC  protobuf_parser.ui )
+    Qt6_WRAP_UI ( UI_SRC  protobuf_parser.ui )
 
     include_directories(${Protobuf_INCLUDE_DIRS})
 
@@ -34,8 +34,8 @@ if( Protobuf_FOUND)
     endif()
 
     target_link_libraries(ProtobufParser
-        ${Qt5Widgets_LIBRARIES}
-        ${Qt5Xml_LIBRARIES}
+        ${Qt6Widgets_LIBRARIES}
+        ${Qt6Xml_LIBRARIES}
         ${Protobuf_LIBS}
         plotjuggler_base
         plotjuggler_qwt)

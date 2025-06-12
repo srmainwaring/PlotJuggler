@@ -7,6 +7,9 @@
 #include "plot_docker_toolbar.h"
 #include "PlotJuggler/svg_util.h"
 
+#include <QInputDialog>
+#include <QLineEdit>
+
 DockToolbar::DockToolbar(ads::CDockWidget* parent)
   : QWidget(parent)
   , _parent(parent)
@@ -79,7 +82,7 @@ void DockToolbar::mouseMoveEvent(QMouseEvent* ev)
   QWidget::mouseMoveEvent(ev);
 }
 
-void DockToolbar::enterEvent(QEvent* ev)
+void DockToolbar::enterEvent(QEnterEvent* ev)
 {
   ui->buttonFullscreen->setVisible(true);
   ui->buttonBackground->setVisible(true);

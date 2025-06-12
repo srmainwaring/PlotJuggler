@@ -22,11 +22,11 @@
     <depend  condition="$ROS_VERSION == 2">fastcdr</depend>
 
     <!-- Qt dependencies -->
-    <depend>qtbase5-dev</depend>
-    <depend>libqt5-svg-dev</depend>
-    <depend>libqt5-websockets-dev</depend>
-    <depend>libqt5-opengl-dev</depend>
-    <depend>libqt5x11extras5-dev</depend>
+    <depend>qtbase6-dev</depend>
+    <depend>libqt6-svg-dev</depend>
+    <depend>libqt6-websockets-dev</depend>
+    <depend>libqt6-opengl-dev</depend>
+    <depend>libqt6x11extras5-dev</depend>
 
     <!-- needed for backward_cpp -->
     <depend>binutils</depend>

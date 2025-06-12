@@ -26,7 +26,7 @@ class EditorRowWidget : public QWidget
 public:
   EditorRowWidget(QString text, QColor color);
 
-  void enterEvent(QEvent* ev) override;
+  void enterEvent(QEnterEvent* ev) override;
   void leaveEvent(QEvent* ev) override;
 
   QString text() const;

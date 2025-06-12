@@ -21,7 +21,7 @@ if(Zcm_FOUND)
     add_definitions(-DQT_PLUGIN)
 
     # Streaming plugin
-    QT5_WRAP_UI(STREAM_UI datastream_zcm.ui config_zcm.ui )
+    Qt6_WRAP_UI(STREAM_UI datastream_zcm.ui config_zcm.ui )
     add_library(DataStreamZcm SHARED
         datastream_zcm.h
         datastream_zcm.cpp
@@ -31,11 +31,11 @@ if(Zcm_FOUND)
 
     # log loading plugin
     target_link_libraries(DataStreamZcm
-        ${Qt5Widgets_LIBRARIES}
+        ${Qt6Widgets_LIBRARIES}
         plotjuggler_base
         ${Zcm_LIBRARIES} )
 
-    QT5_WRAP_UI(LOAD_UI dataload_zcm.ui config_zcm.ui)
+    Qt6_WRAP_UI(LOAD_UI dataload_zcm.ui config_zcm.ui)
     add_library(DataLoadZcm SHARED
         dataload_zcm.h
         dataload_zcm.cpp
@@ -44,7 +44,7 @@ if(Zcm_FOUND)
         ${LOAD_UI})
 
     target_link_libraries(DataLoadZcm
-        ${Qt5Widgets_LIBRARIES}
+        ${Qt6Widgets_LIBRARIES}
         plotjuggler_base
         ${Zcm_LIBRARIES} )
 

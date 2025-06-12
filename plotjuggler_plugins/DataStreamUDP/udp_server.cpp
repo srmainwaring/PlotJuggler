@@ -126,8 +126,13 @@ bool UDP_Server::start(QStringList*)
     }
   };
 
+  // connect(dialog.ui->comboBoxProtocol,
+  //         qOverload<const QString&>(&QComboBox::currentIndexChanged), this,
+  //         onComboChanged);
+
   connect(dialog.ui->comboBoxProtocol,
-          qOverload<const QString&>(&QComboBox::currentIndexChanged), this,
+          &QComboBox::currentTextChanged,
+          this,
           onComboChanged);
 
   dialog.ui->comboBoxProtocol->setCurrentText(protocol);

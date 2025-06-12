@@ -21,7 +21,8 @@ public:
     std::string key;
     std::string prefix;
     // Obtain the key name from measurement name and tags
-    for (auto line : str.splitRef('\n', PJ::SkipEmptyParts))
+    QStringList lines = str.split('\n', Qt::SkipEmptyParts);
+    for (const auto& line : lines)
     {
       auto parts = line.split(' ', PJ::SkipEmptyParts);
       if (parts.size() != 2 && parts.size() != 3)

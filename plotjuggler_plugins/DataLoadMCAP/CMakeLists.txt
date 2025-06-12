@@ -1,7 +1,7 @@
 add_definitions(${QT_DEFINITIONS})
 add_definitions(-DQT_PLUGIN)
 
-QT5_WRAP_UI ( UI_SRC  dialog_mcap.ui  )
+Qt6_WRAP_UI ( UI_SRC  dialog_mcap.ui  )
 
 include(${PROJECT_SOURCE_DIR}/cmake/find_or_download_lz4.cmake)
 find_or_download_lz4()
@@ -31,9 +31,9 @@ add_library(DataLoadMCAP SHARED
     ${UI_SRC}  )
 
 target_link_libraries(DataLoadMCAP PRIVATE
-        ${Qt5Widgets_LIBRARIES}
-        ${Qt5Xml_LIBRARIES}
-        ${Qt5Concurrent_LIBRARIES}
+        ${Qt6Widgets_LIBRARIES}
+        ${Qt6Xml_LIBRARIES}
+        ${Qt6Concurrent_LIBRARIES}
         plotjuggler_base
         lz4::lz4
         zstd::zstd

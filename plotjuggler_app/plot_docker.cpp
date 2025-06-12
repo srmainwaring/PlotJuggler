@@ -337,7 +337,7 @@ DockWidget::DockWidget(PlotDataMapRef& datamap, QWidget* parent)
     this->undoableChange();
   });
 
-  this->layout()->setMargin(10);
+  this->layout()->setContentsMargins(10, 10, 10, 10);
 }
 
 DockWidget::~DockWidget()

@@ -31,7 +31,7 @@ DialogTransformEditor::DialogTransformEditor(PlotWidget* plotwidget)
   auto layout = new QVBoxLayout();
   ui->framePlotPreview->setLayout(layout);
   layout->addWidget(_plotwidget);
-  layout->setMargin(6);
+  layout->setContentsMargins(6, 6, 6, 6);
 
   _plotwidget->zoomOut(false);
   _plotwidget->setContextMenuEnabled(false);

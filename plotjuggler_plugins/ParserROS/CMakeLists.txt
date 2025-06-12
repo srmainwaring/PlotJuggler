@@ -16,7 +16,7 @@ target_include_directories(rosx_introspection PRIVATE
     )
 
 target_link_libraries(ParserROS1
-    ${Qt5Widgets_LIBRARIES}
+    ${Qt6Widgets_LIBRARIES}
     rosx_introspection
     plotjuggler_base
     data_tamer::parser)
@@ -27,7 +27,7 @@ add_library(ParserROS2 SHARED
     ros2_parser.h )
 
 target_link_libraries(ParserROS2
-    ${Qt5Widgets_LIBRARIES}
+    ${Qt6Widgets_LIBRARIES}
     rosx_introspection
     plotjuggler_base
     data_tamer::parser)

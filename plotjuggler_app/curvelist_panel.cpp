@@ -25,6 +25,8 @@
 #include <QScrollBar>
 #include <QTreeWidget>
 
+#include <QRegularExpression>
+
 #include "PlotJuggler/svg_util.h"
 
 //-------------------------------------------------
@@ -49,12 +51,12 @@ CurveListPanel::CurveListPanel(PlotDataMapRef& mapped_plot_data,
   auto layout1 = new QHBoxLayout();
   ui->listPlaceholder1->setLayout(layout1);
   layout1->addWidget(_tree_view, 1);
-  layout1->setMargin(0);
+  layout1->setContentsMargins(0, 0, 0, 0);
 
   auto layout2 = new QHBoxLayout();
   ui->listPlaceholder2->setLayout(layout2);
   layout2->addWidget(_custom_view, 1);
-  layout2->setMargin(0);
+  layout2->setContentsMargins(0, 0, 0, 0);
 
   QSettings settings;
 
@@ -283,7 +285,7 @@ void CurveListPanel::update2ndColumnValues(double tracker_time)
 
 void CurveListPanel::refreshValues()
 {
-  auto default_foreground = _custom_view->palette().foreground();
+  auto default_foreground = _custom_view->palette().windowText();
 
   auto FormattedNumber = [](double value) {
     QSettings settings;
@@ -377,18 +379,32 @@ void CurveListPanel::refreshValues()
 
 QString StringifyArray(QString str)
 {
-  static const QRegExp rx("(\\[\\d+\\])");
-  int pos = 0;
+  // Obsolete in Qt6
+  // static const QRegExp rx("(\\[\\d+\\])");
+  // int pos = 0;
+  // std::vector<std::pair<int, int>> index_positions;
+  //
+  // while ((pos = rx.indexIn(str, pos)) != -1)
+  // {
+  //   QString array_index = rx.cap(1);
+  //
+  //   std::pair<int, int> index = { pos + 1, array_index.size() - 2 };
+  //   index_positions.push_back(index);
+  //   pos += rx.matchedLength();
+  // }
+
+  static const QRegularExpression rx("(\\[\\d+\\])");
   std::vector<std::pair<int, int>> index_positions;
-
-  while ((pos = rx.indexIn(str, pos)) != -1)
+      
+  QRegularExpressionMatchIterator i = rx.globalMatch(str);
+  while (i.hasNext())
   {
-    QString array_index = rx.cap(1);
-
-    std::pair<int, int> index = { pos + 1, array_index.size() - 2 };
-    index_positions.push_back(index);
-    pos += rx.matchedLength();
+      QRegularExpressionMatch match = i.next();
+      QString array_index = match.captured(1);
+      std::pair<int, int> index = { match.capturedStart(1) + 1, array_index.size() - 2 };
+      index_positions.push_back(index);
   }
+
   if (index_positions.empty())
   {
     return str;

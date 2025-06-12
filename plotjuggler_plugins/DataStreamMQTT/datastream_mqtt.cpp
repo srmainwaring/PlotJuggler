@@ -68,8 +68,13 @@ bool DataStreamMQTT::start(QStringList*)
       }
     }
 
+    // connect(_dialog->ui->comboBoxProtocol,
+    //         qOverload<const QString&>(&QComboBox::currentIndexChanged), this,
+    //         &DataStreamMQTT::onComboProtocolChanged);
+
     connect(_dialog->ui->comboBoxProtocol,
-            qOverload<const QString&>(&QComboBox::currentIndexChanged), this,
+            &QComboBox::currentTextChanged,
+            this,
             &DataStreamMQTT::onComboProtocolChanged);
   }
 

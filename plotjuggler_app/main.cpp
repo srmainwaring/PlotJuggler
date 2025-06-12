@@ -10,7 +10,8 @@
 #include <QSplashScreen>
 #include <QThread>
 #include <QCommandLineParser>
-#include <QDesktopWidget>
+// #include <QDesktopWidget>
+#include <QScreen>
 #include <QFontDatabase>
 #include <QSettings>
 #include <QPushButton>
@@ -393,10 +394,15 @@ int main(int argc, char* argv[])
       main_pixmap = getFunnySplashscreen();
     }
 
+    // QSplashScreen splash(main_pixmap, Qt::WindowStaysOnTopHint);
+    // QDesktopWidget* desktop = QApplication::desktop();
+    // const int scrn = desktop->screenNumber();
+    // const QPoint currentDesktopsCenter = desktop->availableGeometry(scrn).center();
+    // splash.move(currentDesktopsCenter - splash.rect().center());
+
     QSplashScreen splash(main_pixmap, Qt::WindowStaysOnTopHint);
-    QDesktopWidget* desktop = QApplication::desktop();
-    const int scrn = desktop->screenNumber();
-    const QPoint currentDesktopsCenter = desktop->availableGeometry(scrn).center();
+    QScreen* screen = QGuiApplication::primaryScreen();
+    const QPoint currentDesktopsCenter = screen->availableGeometry().center();
     splash.move(currentDesktopsCenter - splash.rect().center());
 
     splash.show();

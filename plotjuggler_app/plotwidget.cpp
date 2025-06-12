@@ -1527,7 +1527,7 @@ void PlotWidget::on_pasteAction_triggered()
   QString clipboard_text = clipboard->text();
 
   QDomDocument doc;
-  bool valid = doc.setContent(clipboard_text);
+  bool valid = doc.setContent(clipboard_text, QDomDocument::EncodingFromTextStream);
   if (!valid)
   {
     return;

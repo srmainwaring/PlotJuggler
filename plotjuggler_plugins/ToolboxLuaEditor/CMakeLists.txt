@@ -5,7 +5,7 @@ add_definitions(${QT_DEFINITIONS})
 add_definitions(-DQT_PLUGIN)
 
 
-QT5_WRAP_UI ( UI_SRC
+Qt6_WRAP_UI ( UI_SRC
     lua_editor.ui
     )
 
@@ -15,8 +15,8 @@ add_library(ToolboxLuaEditor SHARED
     ${UI_SRC}  )
 
 target_link_libraries(ToolboxLuaEditor
-    ${Qt5Widgets_LIBRARIES}
-    ${Qt5Xml_LIBRARIES}
+    ${Qt6Widgets_LIBRARIES}
+    ${Qt6Xml_LIBRARIES}
     plotjuggler_base
     plotjuggler_qwt
     QCodeEditor

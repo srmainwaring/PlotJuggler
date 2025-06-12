@@ -19,6 +19,8 @@
 #include <qlist.h>
 #include <qlocale.h>
 
+#include <QRegularExpression>
+
 class QwtAbstractScaleDraw::PrivateData
 {
   public:
@@ -375,8 +377,8 @@ double QwtAbstractScaleDraw::maxTickLength() const
 QwtText QwtAbstractScaleDraw::label( double value ) const
 {
   auto str = QLocale().toString( value, 'f', 6 );
-  str.remove( QRegExp("0+$") ); // Remove any number of trailing 0's
-  str.remove( QRegExp("\\.$") ); // If the last character is just a '.' then remove it
+  str.remove( QRegularExpression("0+$") ); // Remove any number of trailing 0's
+  str.remove( QRegularExpression("\\.$") ); // If the last character is just a '.' then remove it
   return str;
 }
 

@@ -3,9 +3,9 @@ set (CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-QT5_ADD_RESOURCES (RES_SRC  resource.qrc )
+Qt6_ADD_RESOURCES (RES_SRC  resource.qrc )
 
-QT5_WRAP_UI ( UI_SRC
+Qt6_WRAP_UI ( UI_SRC
     aboutdialog.ui
     mainwindow.ui
 

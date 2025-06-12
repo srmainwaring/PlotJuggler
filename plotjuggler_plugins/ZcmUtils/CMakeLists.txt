@@ -20,7 +20,7 @@ if(Zcm_FOUND)
     add_definitions(${QT_DEFINITIONS})
     add_definitions(-DQT_PLUGIN)
 
-    QT5_WRAP_UI(UI_SRC datastream_zcm.ui  )
+    Qt6_WRAP_UI(UI_SRC datastream_zcm.ui  )
 
     SET( SRC
         datastream_zcm.h
@@ -29,7 +29,7 @@ if(Zcm_FOUND)
     add_library(DataStreamZcm SHARED ${SRC} ${UI_SRC})
 
     target_link_libraries(DataStreamZcm
-        ${Qt5Widgets_LIBRARIES}
+        ${Qt6Widgets_LIBRARIES}
         plotjuggler_base
         ${Zcm_LIBRARIES}
         )

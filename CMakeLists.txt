@@ -88,19 +88,15 @@ set(CMAKE_AUTOMOC ON)
 SET(CMAKE_AUTOUIC ON)
 
 
-if(APPLE AND EXISTS /usr/local/opt/qt5)
-    # Homebrew installs Qt5 (up to at least 5.9.1) in
-    # /usr/local/qt5, ensure it can be found by CMake since
-    # it is not in the default /usr/local prefix.
-    # source: https://github.com/Homebrew/homebrew-core/issues/8392#issuecomment-325226494
-    list(APPEND CMAKE_PREFIX_PATH "/usr/local/opt/qt5")
+if(APPLE AND EXISTS /usr/local/opt/qt@6)
+    list(APPEND CMAKE_PREFIX_PATH "/usr/local/opt/qt@6")
     set(CMAKE_MACOSX_RPATH 1)
-elseif(APPLE AND EXISTS /opt/homebrew/opt/qt@5)
-    list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/opt/qt@5")
+elseif(APPLE AND EXISTS /opt/homebrew/opt/qt@6)
+    list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/opt/qt@6")
     set(CMAKE_MACOSX_RPATH 1)
 endif()
 
-find_package(Qt5 REQUIRED COMPONENTS
+find_package(Qt6 REQUIRED COMPONENTS
     Core
     Widgets
     PrintSupport
@@ -109,18 +105,23 @@ find_package(Qt5 REQUIRED COMPONENTS
     Svg
     OpenGL
     WebSockets
-    Network)
+    Network
+    Core5Compat
+    OpenGLWidgets
+)
 
 set( QT_LINK_LIBRARIES
-    Qt5::Core
-    Qt5::Widgets
-    Qt5::PrintSupport
-    Qt5::Xml
-    Qt5::Concurrent
-    Qt5::Svg
-    Qt5::OpenGL
-    Qt5::WebSockets
-    )
+    Qt6::Core
+    Qt6::Widgets
+    Qt6::PrintSupport
+    Qt6::Xml
+    Qt6::Concurrent
+    Qt6::Svg
+    Qt6::OpenGL
+    Qt6::WebSockets
+    Qt6::Core5Compat
+    Qt6::OpenGLWidgets
+)
 
 if (NOT CMAKE_BUILD_TYPE)
     message(STATUS "No build type selected, default to RelWithDebInfo")
@@ -140,14 +141,16 @@ else()
 ENDIF()
 
 include_directories(
-    ${Qt5Core_INCLUDE_DIRS}
-    ${Qt5Widgets_INCLUDE_DIRS}
-    ${Qt5Concurrent_INCLUDE_DIRS}
-    ${Qt5PrintSupport_INCLUDE_DIRS}
-    ${Qt5Xml_INCLUDE_DIRS}
-    ${Qt5WebSockets_INCLUDE_DIRS}
-    ${Qt5Svg_INCLUDE_DIRS}
-    ${Qt5OpenGL_INCLUDE_DIRS}
+    ${Qt6Core_INCLUDE_DIRS}
+    ${Qt6Widgets_INCLUDE_DIRS}
+    ${Qt6Concurrent_INCLUDE_DIRS}
+    ${Qt6PrintSupport_INCLUDE_DIRS}
+    ${Qt6Xml_INCLUDE_DIRS}
+    ${Qt6WebSockets_INCLUDE_DIRS}
+    ${Qt6Svg_INCLUDE_DIRS}
+    ${Qt6OpenGL_INCLUDE_DIRS}
+    ${Qt6Core5Compat_INCLUDE_DIRS}
+    ${Qt6OpenGLWidgets_INCLUDE_DIRS}
 )
 
 #########################  3rd party dependencies  #########################
@@ -191,7 +194,7 @@ set(PLOTJUGGLER_BASE_SRC
     plotjuggler_base/src/reactive_function.cpp
 )
 
-qt5_wrap_cpp(PLOTJUGGLER_BASE_MOCS
+qt6_wrap_cpp(PLOTJUGGLER_BASE_MOCS
   plotjuggler_base/include/PlotJuggler/dataloader_base.h
   plotjuggler_base/include/PlotJuggler/statepublisher_base.h
   plotjuggler_base/include/PlotJuggler/toolbox_base.h

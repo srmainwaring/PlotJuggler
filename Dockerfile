@@ -1,8 +1,8 @@
 FROM ubuntu:22.04 as builder
 
 RUN apt-get update && \
-    apt-get -y install git cmake build-essential wget file qtbase5-dev libqt5svg5-dev \
-                       libqt5websockets5-dev libqt5opengl5-dev libqt5x11extras5-dev \
+    apt-get -y install git cmake build-essential wget file qtbase6-dev libqt6svg6-dev \
+                       libqt6websockets6-dev libqt6opengl6-dev libqt6x11extras6-dev \
                        libprotoc-dev libzmq3-dev liblz4-dev libzstd-dev libmosquittopp-dev
 
 RUN mkdir -p /opt/plotjuggler

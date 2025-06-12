@@ -528,7 +528,7 @@ void QwtPlotRenderer::render( QwtPlot* plot,
             if ( scaleWidget )
             {
                 baseLineDists[axisPos] = scaleWidget->margin();
-                scaleWidget->setMargin( 0 );
+                scaleWidget->setContentsMargins(0, 0, 0, 0);
             }
 
             if ( !plot->isAxisVisible( axisId ) )

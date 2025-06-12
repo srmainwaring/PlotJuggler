@@ -8,7 +8,7 @@ add_library(ParserLineInflux SHARED
     line_parser.h )
 
 target_link_libraries(ParserLineInflux
-    ${Qt5Widgets_LIBRARIES}
+    ${Qt6Widgets_LIBRARIES}
     plotjuggler_base)
 
 

@@ -56,6 +56,7 @@ public:
     QImage inner_selector;
     DisplayFlags display_flags;
     QColor (*color_from)(qreal,qreal,qreal,qreal);
+    QColor (*color_fromf)(float,float,float,float);
     QColor (*rainbow_from_hue)(qreal);
     int max_size = 128;
 
@@ -63,7 +64,7 @@ public:
         : w(widget), hue(0), sat(0), val(0),
         wheel_width(20), mouse_status(Nothing),
         display_flags(FLAGS_DEFAULT),
-        color_from(&QColor::fromHsvF), rainbow_from_hue(&detail::rainbow_hsv)
+        color_fromf(&QColor::fromHsvF), rainbow_from_hue(&detail::rainbow_hsv)
     { }
 
     /// Calculate outer wheel radius from idget center
@@ -495,7 +496,7 @@ void ColorWheel::setDisplayFlags(DisplayFlags flags)
             p->hue = old_col.hsvHueF();
             p->sat = old_col.hsvSaturationF();
             p->val = old_col.valueF();
-            p->color_from = &QColor::fromHsvF;
+            p->color_fromf = &QColor::fromHsvF;
             p->rainbow_from_hue = &detail::rainbow_hsv;
         }
         p->render_ring();

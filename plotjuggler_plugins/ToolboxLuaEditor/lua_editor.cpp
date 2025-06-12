@@ -12,6 +12,7 @@
 #include "PlotJuggler/svg_util.h"
 
 #include "QSyntaxStyle"
+#include <QPlainTextEdit>
 
 ToolboxLuaEditor::ToolboxLuaEditor()
 {
@@ -490,11 +491,11 @@ bool ToolboxLuaEditor::eventFilter(QObject* obj, QEvent* ev)
     if (ctrl_modifier_pressed)
     {
       int prev_size = _font_size;
-      if (wheel_event->delta() < 0)
+      if (wheel_event->angleDelta().y() < 0)
       {
         _font_size = std::max(8, prev_size - 1);
       }
-      else if (wheel_event->delta() > 0)
+      else if (wheel_event->angleDelta().y() > 0)
       {
         _font_size = std::min(14, prev_size + 1);
       }

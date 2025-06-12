@@ -52,7 +52,7 @@ namespace
             scaleWidget->setTransformation( scaleEngine->transformation() );
 
             scaleWidget->setFont( fscl );
-            scaleWidget->setMargin( 2 );
+            scaleWidget->setContentsMargins(2, 2, 2, 2);
 
             QwtText text = scaleWidget->title();
             text.setFont( fttl );

@@ -27,6 +27,8 @@
 #include <QListWidgetItem>
 #include <QSyntaxHighlighter>
 
+#include <QRegularExpression>
+
 #include "QLuaHighlighter"
 
 #include "lua_custom_function.h"
@@ -144,7 +146,7 @@ FunctionEditorWidget::FunctionEditorWidget(PlotDataMapRef& plotMapData,
   ui->lineEditTab2Filter->installEventFilter(this);
 
   auto preview_layout = new QHBoxLayout(ui->framePlotPreview);
-  preview_layout->setMargin(6);
+  preview_layout->setContentsMargins(6, 6, 6, 6);
   preview_layout->addWidget(_preview_widget);
 
   _preview_widget->setContextMenuEnabled(false);
@@ -901,16 +903,36 @@ void FunctionEditorWidget::onLineEditTab2FilterChanged()
 
   if (ui->radioButtonRegExp->isChecked() || ui->radioButtonWildcard->isChecked())
   {
-    QRegExp rx(filter_text);
+    // QRegularExpression rx(filter_text);
+    // if (ui->radioButtonWildcard->isChecked())
+    // {
+    //   rx.setPatternSyntax(QRegularExpression::Wildcard);
+    // }
+
+    QRegularExpression rx;
     if (ui->radioButtonWildcard->isChecked())
     {
-      rx.setPatternSyntax(QRegExp::Wildcard);
+        rx.setPattern(QRegularExpression::wildcardToRegularExpression(filter_text));
     }
+    else
+    {
+        rx.setPattern(filter_text);
+    }
+
+    // for (const auto& [name, plotdata] : _plot_map_data.numeric)
+    // {
+    //   auto qname = QString::fromStdString(name);
+    //   if (rx.exactMatch(qname))
+    //   {
+    //     ui->listBatchSources->addItem(qname);
+    //   }
+    // }
 
     for (const auto& [name, plotdata] : _plot_map_data.numeric)
     {
       auto qname = QString::fromStdString(name);
-      if (rx.exactMatch(qname))
+      QRegularExpressionMatch match = rx.match(qname);
+      if (match.hasMatch() && match.captured(0) == qname)
       {
         ui->listBatchSources->addItem(qname);
       }

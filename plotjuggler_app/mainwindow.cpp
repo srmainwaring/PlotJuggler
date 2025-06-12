@@ -68,8 +68,8 @@
 MainWindow::MainWindow(const QCommandLineParser& commandline_parser, QWidget* parent)
   : QMainWindow(parent)
   , ui(new Ui::MainWindow)
-  , _undo_shortcut(QKeySequence(Qt::CTRL + Qt::Key_Z), this)
-  , _redo_shortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Z), this)
+  , _undo_shortcut(QKeySequence::Undo, this)
+  , _redo_shortcut(QKeySequence::Redo, this)
   , _fullscreen_shortcut(Qt::Key_F10, this)
   , _streaming_shortcut(QKeySequence(Qt::CTRL + Qt::Key_Space), this)
   , _playback_shotcut(Qt::Key_Space, this)
@@ -342,7 +342,7 @@ MainWindow::MainWindow(const QCommandLineParser& commandline_parser, QWidget* pa
   forEachWidget([&](PlotWidget* plot) { plot->configureTracker(_tracker_param); });
 
   auto editor_layout = new QVBoxLayout();
-  editor_layout->setMargin(0);
+  editor_layout->setContentsMargins(0, 0, 0, 0);
   ui->formulaPage->setLayout(editor_layout);
   _function_editor =
       new FunctionEditorWidget(_mapped_plot_data, _transform_functions, this);
@@ -2547,8 +2547,12 @@ void MainWindow::updatedDisplayTime()
     timeLine->setText(QString::number(relative_time, 'f', 3));
   }
 
+  // QFontMetrics fm(timeLine->font());
+  // int width = fm.width(timeLine->text()) + 10;
+  // timeLine->setFixedWidth(std::max(100, width));
+
   QFontMetrics fm(timeLine->font());
-  int width = fm.width(timeLine->text()) + 10;
+  int width = fm.horizontalAdvance(timeLine->text()) + 10;
   timeLine->setFixedWidth(std::max(100, width));
 }
 
@@ -3410,7 +3414,7 @@ PopupMenu::PopupMenu(QWidget* relative_widget, QWidget* parent)
 
 void PopupMenu::showEvent(QShowEvent*)
 {
-  QPoint p = _w->mapToGlobal({});
+  QPoint p = _w->mapToGlobal(QPoint());
   QRect geo = _w->geometry();
   this->move(p.x() + geo.width(), p.y());
 }

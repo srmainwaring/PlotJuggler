@@ -65,7 +65,7 @@ private:
   void mousePressEvent(QMouseEvent* ev) override;
   void mouseReleaseEvent(QMouseEvent* ev) override;
   void mouseMoveEvent(QMouseEvent* ev) override;
-  void enterEvent(QEvent*) override;
+  void enterEvent(QEnterEvent*) override;
   void leaveEvent(QEvent*) override;
 
   ads::CDockWidget* _parent;

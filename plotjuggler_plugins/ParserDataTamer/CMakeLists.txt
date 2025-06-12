@@ -8,7 +8,7 @@ add_library(ParserDataTamer SHARED
     datatamer_parser.h )
 
 target_link_libraries(ParserDataTamer
-    ${Qt5Widgets_LIBRARIES}
+    ${Qt6Widgets_LIBRARIES}
     plotjuggler_base
     data_tamer_parser
     )

@@ -46,10 +46,10 @@ jobs:
             sudo apt update && sudo apt -y install \
               software-properties-common \
               qtbase5-dev \
-              libqt5svg5-dev \
-              libqt5websockets5-dev \
-              libqt5opengl5-dev \
-              libqt5x11extras5-dev \
+              libqt6svg6-dev \
+              libqt6websockets6-dev \
+              libqt6opengl6-dev \
+              libqt6x11extras6-dev \
               libprotoc-dev \
               libzmq3-dev \
               liblz4-dev libzstd-dev

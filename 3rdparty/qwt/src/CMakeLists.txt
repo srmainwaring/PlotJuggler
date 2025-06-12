@@ -196,11 +196,13 @@ target_include_directories(plotjuggler_qwt PUBLIC
 )
 
 target_link_libraries(plotjuggler_qwt
-    Qt5::Core
-    Qt5::Gui
-    Qt5::Widgets
-    Qt5::Concurrent
-    Qt5::Svg
+    Qt6::Core
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Widgets
+    Qt6::Concurrent
+    Qt6::Svg
+    Qt6::Core5Compat
     )
 
 target_compile_definitions(plotjuggler_qwt PUBLIC QWT_MOC_INCLUDE)

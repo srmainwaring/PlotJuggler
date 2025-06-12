@@ -52,7 +52,7 @@ TabbedPlotWidget::TabbedPlotWidget(QString name, QMainWindow* mainwindow,
   _horizontal_link = true;
 
   QHBoxLayout* main_layout = new QHBoxLayout(this);
-  main_layout->setMargin(0);
+  main_layout->setContentsMargins(0, 0, 0, 0);
 
   _tabWidget = new QTabWidget(this);
   _tabWidget->setTabsClosable(true);
@@ -150,7 +150,7 @@ PlotDocker* TabbedPlotWidget::addTab(QString tab_name)
   QWidget* button_widget = new QWidget();
   QHBoxLayout* layout = new QHBoxLayout(button_widget);
   layout->setSpacing(2);
-  layout->setMargin(0);
+  layout->setContentsMargins(0, 0, 0, 0);
 
   QPushButton* close_button = new QPushButton();
 

@@ -4,9 +4,9 @@ project(QtADS LANGUAGES CXX)
 
 include_directories(include/Qads)
 
-find_package(Qt5 5.5 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
 if (UNIX AND NOT APPLE)
-        find_package(Qt5 5.5 COMPONENTS X11Extras REQUIRED)
+        find_package(Qt6 COMPONENTS X11Extras REQUIRED)
 endif()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -63,10 +63,10 @@ endif()
 add_library(qt_advanced_docking STATIC ${ads_SRCS} )
 target_compile_definitions(qt_advanced_docking PUBLIC ADS_STATIC)
 
-target_link_libraries(qt_advanced_docking PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets)
+target_link_libraries(qt_advanced_docking PUBLIC Qt6::Core Qt6::Gui Qt6::Widgets)
 
 if(UNIX AND NOT APPLE)
-    target_link_libraries(qt_advanced_docking PUBLIC Qt5::X11Extras)
+    target_link_libraries(qt_advanced_docking PUBLIC Qt6::X11Extras)
         target_link_libraries(qt_advanced_docking PRIVATE xcb)
 endif()
 

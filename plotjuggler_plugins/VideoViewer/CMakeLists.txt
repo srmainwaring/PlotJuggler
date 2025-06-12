@@ -13,7 +13,7 @@ else()
     add_definitions(${QT_DEFINITIONS})
     add_definitions(-DQT_PLUGIN)
 
-    QT5_WRAP_UI ( UI_SRC  video_dialog.ui  )
+    Qt6_WRAP_UI ( UI_SRC  video_dialog.ui  )
 
     add_library(PublisherVideoViewer SHARED
         video_viewer.cpp
@@ -21,7 +21,7 @@ else()
         ${UI_SRC}  )
 
     target_link_libraries(PublisherVideoViewer
-        Qt5::Widgets
+        Qt6::Widgets
         ${QTAVWIDGETS_LIBRARIES}
         plotjuggler_base
         )

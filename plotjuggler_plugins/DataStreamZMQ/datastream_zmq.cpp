@@ -10,6 +10,8 @@
 #include <chrono>
 #include <iostream>
 
+#include <QRegularExpression>
+
 using namespace PJ;
 
 StreamZMQDialog::StreamZMQDialog(QWidget* parent)
@@ -107,7 +109,8 @@ bool DataStreamZMQ::start(QStringList*)
   dialog->ui->lineEditTopics->setText(topics);
 
   connect(dialog->ui->comboBoxProtocol,
-          qOverload<const QString&>(&QComboBox::currentIndexChanged), this,
+          &QComboBox::currentTextChanged,
+          this,
           [&](const QString& selected_protocol) {
             if (_parser_creator)
             {
@@ -324,7 +327,7 @@ bool DataStreamZMQ::parseMessage(const std::string& topic, const PJ::MessageRef&
 
 void DataStreamZMQ::parseTopicFilters(const QString& topic_filters)
 {
-  const QRegExp regex("(,{0,1}\\s+)|(;\\s*)");
+  const QRegularExpression regex("(,{0,1}\\s+)|(;\\s*)");
 
   if (topic_filters.trimmed().size() != 0)
   {

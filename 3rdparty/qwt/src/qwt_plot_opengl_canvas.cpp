@@ -17,6 +17,8 @@
 #include <qopenglframebufferobject.h>
 #include <qopenglpaintdevice.h>
 
+#include <QOpenGLWidget>
+
 class QwtPlotOpenGLCanvas::PrivateData
 {
   public:

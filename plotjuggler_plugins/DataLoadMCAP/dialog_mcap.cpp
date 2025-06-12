@@ -17,8 +17,8 @@ DialogMCAP::DialogMCAP(
     std::optional<mcap::LoadParams> default_parameters, QWidget* parent)
   : QDialog(parent)
   , ui(new Ui::dialog_mcap)
-  , _select_all(QKeySequence(Qt::CTRL + Qt::Key_A), this)
-  , _deselect_all(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_A), this)
+  , _select_all(QKeySequence(QKeyCombination(Qt::CTRL, Qt::Key_A)), this)
+  , _deselect_all(QKeySequence(QKeyCombination(Qt::CTRL | Qt::SHIFT, Qt::Key_A)), this)
 {
   ui->setupUi(this);
 

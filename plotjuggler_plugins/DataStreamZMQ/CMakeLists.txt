@@ -15,13 +15,13 @@ if(ZeroMQ_FOUND)
     add_definitions(${QT_DEFINITIONS})
     add_definitions(-DQT_PLUGIN)
 
-    QT5_WRAP_UI ( UI_SRC  datastream_zmq.ui  )
+    Qt6_WRAP_UI ( UI_SRC  datastream_zmq.ui  )
 
     add_library(DataStreamZMQ SHARED datastream_zmq.cpp ${UI_SRC}  )
 
     target_include_directories(DataStreamZMQ PRIVATE ${ZeroMQ_INCLUDE_DIRS})
     target_link_libraries(DataStreamZMQ
-        ${Qt5Widgets_LIBRARIES}
+        ${Qt6Widgets_LIBRARIES}
         plotjuggler_base
         ${ZeroMQ_LIBRARIES}
     )

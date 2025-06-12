@@ -19,7 +19,7 @@ target_include_directories(ParserDDS PRIVATE
     )
 
 target_link_libraries(ParserDDS
-    ${Qt5Widgets_LIBRARIES}
+    ${Qt6Widgets_LIBRARIES}
     dds_parser
     plotjuggler_base)
 

@@ -4,7 +4,7 @@ include_directories( ../ )
 add_definitions(${QT_DEFINITIONS})
 add_definitions(-DQT_PLUGIN)
 
-QT5_WRAP_UI ( UI_SRC
+Qt6_WRAP_UI ( UI_SRC
     quaternion_to_rpy.ui
     )
 
@@ -14,8 +14,9 @@ add_library(ToolboxQuaternion SHARED
     ${UI_SRC}  )
 
 target_link_libraries(ToolboxQuaternion
-    ${Qt5Widgets_LIBRARIES}
-    ${Qt5Xml_LIBRARIES}
+    ${Qt6Widgets_LIBRARIES}
+    ${Qt6Xml_LIBRARIES}
+    ${Qt6OpenGLWidgets_LIBRARIES}
     plotjuggler_base
     plotjuggler_qwt)
 

@@ -2,7 +2,7 @@ name: plotjuggler
 adopt-info: plotjuggler # parse metadata from the plotjuggler part
 summary: The timeseries visualization tool that you deserve
 description: |
-  QT5 based application to display time series in plots,
+  Qt6 based application to display time series in plots,
   using an intuitive "drag and drop" interface.
 
   The snap comes with only ROS 2 plugins.
@@ -30,7 +30,7 @@ parts:
     source: .
     cmake-parameters:
       - -DCMAKE_BUILD_TYPE=Release
-      - "-DCMAKE_PREFIX_PATH=$(echo $SNAPCRAFT_CMAKE_ARGS | awk -F= '{printf(\"%s/usr/lib/$CRAFT_ARCH_TRIPLET/cmake/Qt5\", $2)}')"
+      - "-DCMAKE_PREFIX_PATH=$(echo $SNAPCRAFT_CMAKE_ARGS | awk -F= '{printf(\"%s/usr/lib/$CRAFT_ARCH_TRIPLET/cmake/Qt6\", $2)}')"
     build-packages:
       - distro-info-data
       - libpulse0
@@ -72,7 +72,7 @@ parts:
       # point to previously build plotjuggler
       - -Dplotjuggler_DIR:PATH=$CRAFT_STAGE/usr/local/lib/cmake/plotjuggler
       # Due to https://github.com/ament/ament_cmake/issues/189 implicitly OpenSSL link breaks. So we change CMAKE_PREFIX_PATH and not CMAKE_FIND_ROOT_PATH
-      - -DCMAKE_PREFIX_PATH=$(echo $SNAPCRAFT_CMAKE_ARGS | awk -F= '{printf("%s/usr/lib/x86_64-linux-gnu/cmake/Qt5", $2)}')
+      - -DCMAKE_PREFIX_PATH=$(echo $SNAPCRAFT_CMAKE_ARGS | awk -F= '{printf("%s/usr/lib/x86_64-linux-gnu/cmake/Qt6", $2)}')
       - --event-handlers=console_direct+
     build-packages:
       - git

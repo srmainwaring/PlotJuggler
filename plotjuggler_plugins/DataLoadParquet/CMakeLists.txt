@@ -14,6 +14,15 @@ else()
 
     find_package(Arrow CONFIG QUIET)
     find_package(Parquet CONFIG QUIET)
+
+    # message(STATUS "ARROW_FOUND: ${ARROW_FOUND}")
+    # message(STATUS "ARROW_INCLUDE_DIR: ${ARROW_INCLUDE_DIR}")
+    # message(STATUS "ARROW_LIB_DIR: ${ARROW_LIB_DIR}")
+
+    # message(STATUS "PARQUET_FOUND: ${PARQUET_FOUND}")
+    # message(STATUS "PARQUET_INCLUDE_DIR: ${PARQUET_INCLUDE_DIR}")
+    # message(STATUS "PARQUET_LIB_DIR: ${PARQUET_LIB_DIR}")
+
 endif()
 
 
@@ -26,20 +35,21 @@ if(Arrow_FOUND)
     add_definitions(${QT_DEFINITIONS})
     add_definitions(-DQT_PLUGIN)
 
-    QT5_WRAP_UI ( UI_SRC  dataload_parquet.ui  )
+    Qt6_WRAP_UI ( UI_SRC  dataload_parquet.ui  )
 
     SET( SRC dataload_parquet.cpp )
 
-    add_library(DataLoadParquet SHARED ${SRC} ${UI_SRC}  )
+    # Disable on macOS
+    # add_library(DataLoadParquet SHARED ${SRC} ${UI_SRC}  )
 
-    target_link_libraries(DataLoadParquet
-        ${Qt5Widgets_LIBRARIES}
-        ${Qt5Xml_LIBRARIES}
-        ${PARQUET_SHARED_LIB}
-        plotjuggler_base)
+    # target_link_libraries(DataLoadParquet
+    #     ${Qt6Widgets_LIBRARIES}
+    #     ${Qt6Xml_LIBRARIES}
+    #     ${PARQUET_LIBRARIES}
+    #     plotjuggler_base)
 
 
-    install(TARGETS DataLoadParquet DESTINATION ${PJ_PLUGIN_INSTALL_DIRECTORY}  )
+    # install(TARGETS DataLoadParquet DESTINATION ${PJ_PLUGIN_INSTALL_DIRECTORY}  )
 
 else()
     message("[Parquet] not found. Skipping plugin DataLoadParquet.")

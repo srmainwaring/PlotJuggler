@@ -1,10 +1,12 @@
 #include "protobuf_factory.h"
 
+#include <QFileDialog>
 #include <QSettings>
 #include <QMessageBox>
 
 #include "PlotJuggler/contrib/fmt/format.h"
 #include "PlotJuggler/svg_util.h"
+
 
 namespace gp = google::protobuf;
 
@@ -38,7 +40,9 @@ ParserFactoryProtobuf::ParserFactoryProtobuf()
     onComboChanged(last_type);
   }
 
-  connect(ui->comboBox, qOverload<const QString&>(&QComboBox::currentIndexChanged), this,
+  connect(ui->comboBox,
+          &QComboBox::currentTextChanged,
+          this,
           &ParserFactoryProtobuf::onComboChanged);
 }
 
